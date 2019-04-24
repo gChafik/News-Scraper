@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Scraping With Mongoose</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/materia/bootstrap.min.css">
+    <style>
+      body { background-color: rgb(212, 232, 245) }
+      #wrapper {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        /* padding-top: 5%; */
+      }
+      
+      /* #articles {
+        display: inline-block;
+        overflow: auto;
+        width: 60%;
+        height: 700px;
+      } */
+      #notes {
+        float: right;
+        width: 30%;
+      }
+      textarea, input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+      }
+      input {
+        height: 36px;
+        font-size: 24px;
+      }
+      textarea {
+        height: 200px;
+        font-size: 18px;
+      }
+      .btn {
+        display: inline-block;
+        vertical-align: middle;
+        border: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="/">HN Mongo Scraper</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/saved">Saved Articles</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="btn btn-outline-info scrape-new" href="/scrape">SCRAPE NEW ARTICLES!</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-info scrape-new">CLEAR ARTICLES!</a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+    </div>
+
+    <div class="jumbotron text-center">
+            <div class="container">
+              <h1 class="display-4">Hacker News Scraper</h1>
+              <p class="lead">With MongoDB</p>
+            </div>
+          </div>
+
+    <div id="wrapper">
+      <!-- <h1>Hacker News Scraper</h1>
+      <h2><i>With MongoDB</i></h2> -->
+      <div id="articles"></div>
+      <!-- <div id="notes"></div> -->
+
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text"><a class="nav-link" href="/saved">Saved Articles</a></p>
+              <a href="#" class="btn btn-primary"></a>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
