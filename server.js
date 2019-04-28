@@ -73,15 +73,18 @@ app.get("/articles/:id", function(req, res){
 });
 
 //Route for saving Articles
-app.post("/save/:id", function(req, res) {
-    db.Article.findOneAndUpdate({_id: req.params.id}, {$set: {"saved": true}})
-    .then(function(dbArticle){
+
+app.put("/saved/:id", function(req, res) {
+
+    db.Article
+      .findByIdAndUpdate({ _id: req.params.id }, { $set: { saved: true }})
+      .then(function(dbArticle) {
         res.json(dbArticle);
-    })
-    .catch(function(err){
+      })
+      .catch(function(err) {
         res.json(err);
-    });
-});
+      });
+  });
 
 //Route for getting saved articles
 app.get("/saved", function(req, res){
@@ -93,6 +96,19 @@ app.get("/saved", function(req, res){
         res.json(err);
     });
 });
+
+//Route for deleting saved articles
+app.put("/delete/:id", function(req, res) {
+
+    db.Article
+      .findByIdAndUpdate({ _id: req.params.id }, { $set: { saved: false }})
+      .then(function(dbArticle) {
+        res.json(dbArticle);
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
 
 // Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function(req, res) {
