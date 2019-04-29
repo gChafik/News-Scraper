@@ -87,13 +87,15 @@ app.put("/saved/:id", function(req, res) {
   });
 
 //Route for getting saved articles
-app.get("/saved", function(req, res){
-    db.Article.find({"saved": true})
-    .then(function(dbArticle){
-        res.json(dbArticle);
+app.get("/saved", function(req, res) {
+
+  db.Article
+    .find({ saved: true })
+    .then(function(dbArticle) {
+      res.json(dbArticle);
     })
-    .catch(function(err){
-        res.json(err);
+    .catch(function(err) {
+      res.json(err);
     });
 });
 
@@ -112,20 +114,19 @@ app.put("/delete/:id", function(req, res) {
 
 // Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function(req, res) {
-    // Create a new note and pass the req.body to the entry
-    db.Note.create(req.body)
-      .then(function(dbNote) {
-        return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
-      })
-      .then(function(dbArticle) {
-        // If we were able to successfully update an Article, send it back to the client
-        res.json(dbArticle);
-      })
-      .catch(function(err) {
-        // If an error occurred, send it to the client
-        res.json(err);
-      });
-  });
+
+  db.Note
+    .create(req.body)
+    .then(function(dbNote) {
+      return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+    })
+    .then(function(dbArticle) {
+      res.json(dbArticle);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
   
 
 app.listen(PORT, function(){
