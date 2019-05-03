@@ -60,7 +60,7 @@ app.get("/articles", function(req, res){
         res.json(err);
     });
 });
-
+//Route for grabbing a specific article and its note
 app.get("/articles/:id", function(req, res){
     db.Article.findOne({_id: req.params.id})
     .populate("note")
