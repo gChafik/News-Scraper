@@ -6,7 +6,7 @@ let logger = require("morgan");
 
 let db = require("./models");
 
-let PORT = 3000;
+let PORT = process.env.PORT || 3000;
 
 // Initialize Express
 let app = express();
